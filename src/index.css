@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    /* Contain decorative glows that extend past the viewport edges.
+       `clip` works reliably on real mobile/tablet (where `overflow-x: hidden`
+       on body alone leaks) and—unlike `hidden`—creates no scroll container,
+       so sticky panels and scroll tracking keep working.
+       `hidden` is kept as a fallback for older browsers. */
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-ink text-cloud font-sans antialiased;
+  }
+
+  ::selection {
+    background: theme('colors.accent');
+    color: theme('colors.ink');
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme('colors.ink');
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a30;
+    border-radius: 99px;
+    border: 2px solid theme('colors.ink');
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a42;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply relative mx-auto w-full max-w-content px-6 py-28 md:px-10 md:py-36;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.35em] text-accent;
+  }
+
+  .display-xl {
+    @apply font-display font-bold leading-[0.95] tracking-tight;
+    font-size: clamp(2.75rem, 9vw, 7.5rem);
+  }
+
+  .display-lg {
+    @apply font-display font-semibold leading-[1.02] tracking-tight;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+  }
+
+  .link-underline {
+    @apply relative inline-block text-cloud transition-colors duration-300;
+    background-image: linear-gradient(theme('colors.accent'), theme('colors.accent'));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.3s ease;
+  }
+  .link-underline:hover {
+    @apply text-accent;
+    background-size: 100% 1px;
+  }
+}
+
+/* Soft radial glow used behind hero / sections */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle grain overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
