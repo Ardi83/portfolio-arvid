@@ -76,7 +76,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="https://cristian-blog.web.app"
+                href="https://arvid-blog.vercel.app"
                 target="_blank"
                 rel="noreferrer"
                 className="ml-1 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors duration-300 hover:text-accent">
@@ -127,7 +127,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://cristian-blog.web.app"
+              href="https://arvid-blog.vercel.app"
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}

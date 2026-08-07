@@ -1,5 +1,5 @@
 import useDataBlogStore from '../store/useDataBlogStore';
-import cristianBack from '../assets/img/cristian-back.webp';
+import arvidBack from '../assets/img/arvid-back.webp';
 
 const BlogPage = () => {
   const { dataBlog } = useDataBlogStore();
@@ -7,10 +7,10 @@ const BlogPage = () => {
     <main>
       <section className="blog-page-section">
         <aside className="blog-page-aside">
-          <div className="blog-page-aside-one">Cristian Nass Blog</div>
+          <div className="blog-page-aside-one">Arvid Nasirabadi Blog</div>
           <img
-            src={cristianBack}
-            alt="Cristian Nass"
+            src={arvidBack}
+            alt="Arvid Nasirabadi"
             width="100%"
             height="auto"
             style={{

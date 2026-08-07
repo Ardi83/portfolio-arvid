@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 import {motion, useScroll, useTransform} from 'framer-motion';
-import cristian from '../assets/images/cristian.webp';
+import arvid from '../assets/images/arvid.webp';
 
 const Home = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -25,8 +25,8 @@ const Home = () => {
         style={{y: yImage, scale: scaleImage}}
         className="absolute inset-0 z-0">
         <img
-          src={cristian}
-          alt="Cristian Nass"
+          src={arvid}
+          alt="Arvid Nasirabadi"
           className="h-full w-full object-cover object-right opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/20" />
@@ -48,7 +48,7 @@ const Home = () => {
           animate={{opacity: 1, y: 0}}
           transition={{duration: 0.6, ease}}
           className="eyebrow mb-6">
-          Cristian Nass — Uppsala, Sweden
+          Arvid Nasirabadi — Uppsala, Sweden
         </motion.p>
 
         <h1 className="display-xl text-cloud">

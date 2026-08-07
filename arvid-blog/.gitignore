@@ -27,3 +27,8 @@ dist-ssr
 .yarn
 .pnp.*
 .vercel
+
+# Secrets and Firestore migration data
+.env
+serviceAccount.json
+firestore-export.json

@@ -6,9 +6,9 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: 'prompt',
   includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
   manifest: {
-    name: 'Cristian',
-    short_name: 'Cristian',
-    description: 'Cristian personal web site.',
+    name: 'Arvid Nasirabadi',
+    short_name: 'Arvid',
+    description: 'Arvid Nasirabadi personal web site.',
     icons: [
       {
         src: '/android-chrome-192x192.png',
