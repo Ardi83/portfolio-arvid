@@ -2,10 +2,18 @@ import SectionHeading from '../components/SectionHeading';
 import Reveal from '../components/Reveal';
 
 const links = [
-  {label: 'Email', value: 'cristian.tirdad@gmail.com', href: 'mailto:cristian.tirdad@gmail.com'},
-  {label: 'LinkedIn', value: 'linkedin.com/in/cristnass', href: 'https://linkedin.com/in/cristnass'},
-  {label: 'GitHub', value: 'github.com/cristian-nass', href: 'https://github.com/cristian-nass'},
-  {label: 'Phone', value: '+46 76 293 18 96', href: 'tel:+46762931896'},
+  {
+    label: 'Email',
+    value: 'arvid.nasirabadi@gmail.com',
+    href: 'mailto:arvid.nasirabadi@gmail.com',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/arvid-nasirabadi-146898183',
+    href: 'https://linkedin.com/in/arvid-nasirabadi-146898183',
+  },
+  {label: 'GitHub', value: 'github.com/Ardi83', href: 'https://github.com/Ardi83'},
+  {label: 'Phone', value: '+46 70 060 89 88', href: 'tel:+46700608988'},
 ];
 
 const Contact = () => {
@@ -29,7 +37,7 @@ const Contact = () => {
 
         <Reveal delay={0.1}>
           <a
-            href="mailto:cristian.tirdad@gmail.com"
+            href="mailto:arvid.nasirabadi@gmail.com"
             className="mt-10 inline-block rounded-full bg-accent px-9 py-4 font-mono text-sm uppercase tracking-widest text-ink transition-transform duration-300 hover:-translate-y-0.5">
             Say hello
           </a>
