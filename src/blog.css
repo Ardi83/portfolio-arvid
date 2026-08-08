@@ -1,0 +1,93 @@
+/* Styles for the /blog route.
+ *
+ * These came from the standalone blog app, where they were global. Everything
+ * is now scoped under .blog-root so the blog's light theme cannot leak into
+ * the portfolio's dark one. The element rules restore the spacing Tailwind's
+ * preflight removes — the blog markup was written without Tailwind. */
+
+@import '@fontsource/figtree/400.css';
+@import '@fontsource/figtree/700.css';
+
+.blog-root {
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Figtree', sans-serif;
+  color: #424242;
+  background-color: #f2eded;
+}
+
+.blog-root h1,
+.blog-root h2 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0.6em 0 0.4em;
+}
+
+.blog-root h2 {
+  font-size: 1.6rem;
+}
+
+.blog-root h5 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.blog-root p {
+  margin: 0.75em 0;
+  line-height: 1.6;
+}
+
+.blog-root hr {
+  border: 0;
+  border-top: 1px solid #e0d9d9;
+  margin: 2rem 0;
+}
+
+.blog-root a {
+  text-decoration: underline;
+}
+
+.blog-page-two {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.blog-page-section {
+  display: flex;
+}
+
+.example-link-a-tag {
+  color: rgb(173, 173, 177);
+}
+
+.example-link-a-tag:hover {
+  color: rgb(41, 41, 97);
+}
+
+.blog-page-aside {
+  flex: 1;
+  width: 100%;
+  margin-right: 20px;
+  border-right: solid 2px #e9e4e4;
+}
+
+.blog-page-aside-one {
+  margin: 2rem 0px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
+  .blog-page-aside-one {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .blog-page-aside-one {
+    font-size: 0.6rem;
+  }
+}

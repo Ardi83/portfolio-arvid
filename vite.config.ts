@@ -42,10 +42,24 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
   },
 
   workbox: {
-    // Only cache same-origin requests (your app assets)
+    // The API must never be served from a CacheFirst store, or the blog would
+    // keep rendering posts from the first response it ever saw.
+    navigateFallbackDenylist: [/^\/api\//],
     runtimeCaching: [
       {
-        urlPattern: ({url}) => url.origin === self.location.origin,
+        urlPattern: ({url}) =>
+          url.origin === self.location.origin && url.pathname.startsWith('/api/'),
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'api-cache',
+          networkTimeoutSeconds: 5,
+          expiration: {maxAgeSeconds: 60 * 60},
+        },
+      },
+      {
+        // Only cache same-origin requests (your app assets)
+        urlPattern: ({url}) =>
+          url.origin === self.location.origin && !url.pathname.startsWith('/api/'),
         handler: 'CacheFirst',
         options: {
           cacheName: 'app-cache',

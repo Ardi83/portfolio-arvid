@@ -5,22 +5,30 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "dev:api": "vercel dev",
+    "build": "tsc && tsc -p tsconfig.api.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:schema": "node scripts/apply-schema.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:import": "node scripts/import-firestore.mjs"
   },
   "dependencies": {
+    "@fontsource/figtree": "^5.2.10",
+    "@libsql/client": "^0.15.15",
     "framer-motion": "^12.40.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^6.30.1",
-    "usehooks-ts": "^3.1.1"
+    "usehooks-ts": "^3.1.1",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
+    "@vercel/node": "^5.3.24",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",

@@ -1,13 +1,24 @@
+import {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import useDataBlogStore from '../store/useDataBlogStore';
-import arvidBack from '../assets/img/arvid-back.webp';
+import arvidBack from '../assets/images/arvid-back.webp';
+import '../blog.css';
 
 const BlogPage = () => {
-  const { dataBlog } = useDataBlogStore();
+  const {dataBlog, loading, error, setDataBlog} = useDataBlogStore();
+
+  useEffect(() => {
+    setDataBlog();
+  }, [setDataBlog]);
+
   return (
-    <main>
+    <main className="blog-root">
       <section className="blog-page-section">
         <aside className="blog-page-aside">
           <div className="blog-page-aside-one">Arvid Nasirabadi Blog</div>
+          <Link to="/" className="example-link-a-tag">
+            ← Back to portfolio
+          </Link>
           <img
             src={arvidBack}
             alt="Arvid Nasirabadi"
@@ -20,6 +31,11 @@ const BlogPage = () => {
           />
         </aside>
         <aside style={{ flex: 4, textAlign: 'left' }}>
+          {loading && <p>Loading posts…</p>}
+          {error && <p>Could not load posts: {error}</p>}
+          {!loading && !error && dataBlog.length === 0 && (
+            <p>No posts yet.</p>
+          )}
           {dataBlog.map((item) => (
             <div style={{ textAlign: 'left' }} key={item.id}>
               <div

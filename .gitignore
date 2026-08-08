@@ -30,5 +30,13 @@ dist-ssr
 
 .vercel
 
-# Local env overrides
+# Secrets and Firestore migration data
 .env
+serviceAccount.json
+firestore-export.json
+
+# Local SQLite database
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
