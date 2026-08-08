@@ -5,6 +5,7 @@ import SectionHeading from '../components/SectionHeading';
 import Reveal from '../components/Reveal';
 import ExperienceDescription from '../components/ExperienceDescription';
 import {experiences} from '../utils/experiences';
+import {projects} from '../utils/projects';
 
 const Experiences = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -147,6 +148,71 @@ const Experiences = () => {
             })}
           </div>
         )}
+
+        {/* Side projects — all self-hosted and live */}
+        <div className="mt-24">
+          <Reveal>
+            <p className="eyebrow mb-3">Built and running</p>
+            <h3 className="display-lg text-2xl text-cloud md:text-3xl">
+              Things I run myself
+            </h3>
+            <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+              Products and services I designed, built and deploy on my own
+              infrastructure — containerised behind an Nginx reverse proxy with
+              PostgreSQL and Cloudflare TLS. All of these are live.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {projects.map((project, i) => (
+              <Reveal key={project.id} delay={i * 0.06}>
+                <div className="group flex h-full flex-col rounded-2xl border border-line bg-ink-card/60 p-7 transition-colors duration-300 hover:border-accent/40">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h4 className="font-display text-xl font-semibold text-cloud">
+                      {project.name}
+                    </h4>
+                    <span className="shrink-0 font-mono text-xs text-accent">
+                      {project.tagline}
+                    </span>
+                  </div>
+
+                  <p className="mt-4 flex-1 leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-line px-3 py-1 font-mono text-[0.7rem] text-muted">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-xs uppercase tracking-widest text-accent transition-opacity duration-300 hover:opacity-70">
+                      Visit ↗
+                    </a>
+                    {project.docsUrl && (
+                      <a
+                        href={project.docsUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-xs uppercase tracking-widest text-muted transition-colors duration-300 hover:text-accent">
+                        API docs ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

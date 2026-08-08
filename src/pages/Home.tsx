@@ -52,7 +52,7 @@ const Home = () => {
         </motion.p>
 
         <h1 className="display-xl text-cloud">
-          {['Front-end', 'Developer'].map((line, i) => (
+          {['Full-stack', 'Developer'].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
                 className="block"
@@ -74,11 +74,11 @@ const Home = () => {
           animate={{opacity: 1, y: 0}}
           transition={{duration: 0.6, delay: 0.5, ease}}
           className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
-          Front-end engineer with{' '}
-          <span className="text-cloud">10+ years</span> shipping fast,
-          accessible web applications — from polished React, Vue and Angular
-          interfaces to the Node and serverless back-ends behind them. Equal
-          parts engineering rigor and a sharp eye for design.
+          Full-stack developer with{' '}
+          <span className="text-cloud">15+ years</span> shipping fast, reliable
+          web applications — from polished React and Next.js interfaces to the
+          NestJS services, databases and CI/CD pipelines behind them. I work
+          professionally with AI, and I run everything I build myself.
         </motion.p>
 
         <motion.div
@@ -87,9 +87,9 @@ const Home = () => {
           transition={{duration: 0.6, delay: 0.6, ease}}
           className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[
-            {value: '10+', label: 'Years experience'},
-            {value: 'Full-stack', label: 'Front-end focused'},
-            {value: 'React · Vue · Angular', label: 'Across the JS ecosystem'},
+            {value: '15+', label: 'Years experience'},
+            {value: 'React · NestJS · .NET', label: 'Front end to back end'},
+            {value: 'Docker · CI/CD · AI', label: 'Ship it and run it'},
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <span className="font-display text-lg font-semibold text-cloud">

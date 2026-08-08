@@ -9,7 +9,7 @@ const Education = () => {
         <SectionHeading
           index="02"
           eyebrow="Education"
-          title="Where I learned the craft"
+          title="Education & certifications"
         />
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -24,10 +24,10 @@ const Education = () => {
                     {item.year}
                   </span>
                 </div>
-                <p className="mt-3 leading-relaxed text-muted">{item.field}</p>
-                <p className="mt-4 font-mono text-xs text-muted/70">
-                  Certified No. {item.certified}
+                <p className="mt-2 font-mono text-xs text-accent/80">
+                  {item.institution}
                 </p>
+                <p className="mt-3 leading-relaxed text-muted">{item.field}</p>
               </div>
             </Reveal>
           ))}
