@@ -29,3 +29,6 @@ dist-ssr
 .pnp.*
 
 .vercel
+
+# Local env overrides
+.env

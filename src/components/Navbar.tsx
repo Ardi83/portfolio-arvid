@@ -2,6 +2,13 @@ import {useEffect, useState} from 'react';
 import {motion, useScroll, useSpring} from 'framer-motion';
 import {useMediaQuery} from 'usehooks-ts';
 
+// The blog is a separate app. In development it runs locally on port 3000
+// (`yarn dev:api` in arvid-blog/); in production it is its own deployment.
+// Override either with VITE_BLOG_URL in .env.
+const blogUrl =
+  import.meta.env.VITE_BLOG_URL ??
+  (import.meta.env.DEV ? 'http://localhost:3000' : 'https://arvid-blog.vercel.app');
+
 const items = [
   {title: 'Home', id: 'home'},
   {title: 'About', id: 'about'},
@@ -76,7 +83,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="https://arvid-blog.vercel.app"
+                href={blogUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="ml-1 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors duration-300 hover:text-accent">
@@ -127,7 +134,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://arvid-blog.vercel.app"
+              href={blogUrl}
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
