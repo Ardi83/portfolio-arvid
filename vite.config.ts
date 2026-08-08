@@ -25,13 +25,13 @@ const localApi = (env: Record<string, string>): Plugin => ({
         res.end(JSON.stringify(body));
       };
 
-      // `_`-prefixed files are shared helpers, not routes — same as on Vercel.
+      // `_`-prefixed files are shared helpers, not routes.
       if (route.startsWith('_') || !existsSync(resolve(server.config.root, 'api', `${route}.ts`))) {
         return sendJson(404, {error: `No API route for /api/${route}`});
       }
 
-      for (const key of ['TURSO_DATABASE_URL', 'TURSO_AUTH_TOKEN']) {
-        if (process.env[key] === undefined && env[key]) process.env[key] = env[key];
+      if (process.env.DATABASE_URL === undefined && env.DATABASE_URL) {
+        process.env.DATABASE_URL = env.DATABASE_URL;
       }
 
       server
@@ -127,8 +127,8 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
 };
 
 export default defineConfig(({mode}) => {
-  // '' prefix so TURSO_* are loaded too, not just VITE_*. These stay on the
-  // server side — the plugin passes them to process.env, never to the client.
+  // '' prefix so DATABASE_URL is loaded too, not just VITE_*. It stays on the
+  // server side — the plugin passes it to process.env, never to the client.
   const env = loadEnv(mode, process.cwd(), '');
 
   return {

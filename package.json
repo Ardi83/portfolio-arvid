@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:api": "vercel dev",
-    "build": "tsc && tsc -p tsconfig.api.json && vite build",
+    "build": "tsc && vite build && tsc -p tsconfig.server.json",
+    "start": "node dist-server/server/index.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "db:schema": "node scripts/apply-schema.mjs",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@fontsource/figtree": "^5.2.10",
     "@libsql/client": "^0.15.15",
+    "express": "^5.1.0",
     "framer-motion": "^12.40.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -24,12 +25,12 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/node": "^20.11.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
-    "@vercel/node": "^5.3.24",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",

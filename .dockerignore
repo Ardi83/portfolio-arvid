@@ -1,0 +1,20 @@
+node_modules
+dist
+dist-server
+.git
+.github
+.vscode
+.idea
+
+# Never bake secrets or the database into the image — the db is bind-mounted.
+.env
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+data
+serviceAccount.json
+firestore-export.json
+
+*.log
+.DS_Store

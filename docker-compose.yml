@@ -1,0 +1,35 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-prod:latest
+    container_name: portfolio-prod
+    restart: unless-stopped
+    networks:
+      # nginx-proxy routing only — this service talks to nothing else.
+      - my-bridge-network
+    environment:
+      - TZ=${TZ:-Europe/Stockholm}
+      - NODE_ENV=production
+      - PORT=3000
+      - VIRTUAL_HOST=portfolio.arvidn.dev
+      - VIRTUAL_PORT=3000
+      # Points at the bind mount below, not into the image.
+      - DATABASE_URL=file:/app/data/local.db
+    volumes:
+      # Copy local.db into ./data/ on the server before starting.
+      # Read-only: the blog only ever reads, so the container cannot corrupt it.
+      - ./data:/app/data:ro
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+networks:
+  my-bridge-network:
+    external: true

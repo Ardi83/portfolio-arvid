@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-server
 dist-ssr
 *.local
 
@@ -28,14 +29,13 @@ dist-ssr
 !.yarn/releases
 .pnp.*
 
-.vercel
-
 # Secrets and Firestore migration data
 .env
 serviceAccount.json
 firestore-export.json
 
-# Local SQLite database
+# Local SQLite database — copied to the server by hand, never committed
+data/
 *.db
 *.db-journal
 *.db-wal

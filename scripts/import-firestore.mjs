@@ -1,10 +1,9 @@
-// One-off migration: Firestore JSON export -> Turso.
+// One-off migration: Firestore JSON export -> the local SQLite database.
 //
 //   1. npx -y node-firestore-import-export firestore-export \
 //        -a serviceAccount.json -b firestore-export.json
-//   2. turso db shell <db-name> < db/schema.sql
-//   3. TURSO_DATABASE_URL=... TURSO_AUTH_TOKEN=... \
-//        node scripts/import-firestore.mjs firestore-export.json
+//   2. yarn db:schema
+//   3. yarn db:import firestore-export.json
 //
 // Re-running is safe: rows are upserted by primary key, and html_notes is
 // replaced wholesale (it has no stable ids to match on).
@@ -22,11 +21,10 @@ if (!exportPath) {
   process.exit(1);
 }
 
-const url = process.env.TURSO_DATABASE_URL;
-const authToken = process.env.TURSO_AUTH_TOKEN;
+const url = process.env.DATABASE_URL;
 
 if (!url) {
-  console.error('TURSO_DATABASE_URL is not set.');
+  console.error('DATABASE_URL is not set.');
   process.exit(1);
 }
 
@@ -72,7 +70,7 @@ const collections = unwrapCollections(raw);
 const blogData = collections['blog-data'] ?? collections['blog_data'] ?? {};
 const htmlData = collections['html'] ?? {};
 
-const db = createClient({url, authToken});
+const db = createClient({url});
 
 const statements = [];
 

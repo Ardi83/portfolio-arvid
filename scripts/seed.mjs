@@ -10,10 +10,10 @@ import {loadEnv} from './_env.mjs';
 
 await loadEnv();
 
-const url = process.env.TURSO_DATABASE_URL;
+const url = process.env.DATABASE_URL;
 
 if (!url) {
-  console.error('TURSO_DATABASE_URL is not set. Copy .env.example to .env.');
+  console.error('DATABASE_URL is not set. Copy .env.example to .env.');
   process.exit(1);
 }
 
@@ -74,7 +74,7 @@ const notes = [
   },
 ];
 
-const db = createClient({url, authToken: process.env.TURSO_AUTH_TOKEN});
+const db = createClient({url});
 
 const statements = posts.map((post) => ({
   sql: `INSERT INTO blog_posts

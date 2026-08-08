@@ -1,5 +1,5 @@
--- Schema for the Arvid blog (Turso / libSQL).
--- Apply with:  turso db shell <db-name> < db/schema.sql
+-- Schema for the Arvid blog (SQLite, via libSQL).
+-- Apply with:  yarn db:schema
 
 -- Replaces the Firestore `blog-data` collection.
 -- `id` stays TEXT so existing Firestore document ids survive the migration.

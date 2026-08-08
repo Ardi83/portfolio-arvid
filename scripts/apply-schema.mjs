@@ -1,7 +1,6 @@
-// Applies db/schema.sql to the database in TURSO_DATABASE_URL.
+// Applies db/schema.sql to the database in DATABASE_URL.
 //
-// Exists so the schema can be applied from plain Node on any platform — the
-// Turso CLI requires WSL on Windows. Reads .env if present.
+// Reads .env if present.
 //
 //   node scripts/apply-schema.mjs
 //
@@ -14,19 +13,18 @@ import {loadEnv} from './_env.mjs';
 
 await loadEnv();
 
-const url = process.env.TURSO_DATABASE_URL;
-const authToken = process.env.TURSO_AUTH_TOKEN;
+const url = process.env.DATABASE_URL;
 
 if (!url) {
   console.error(
-    'TURSO_DATABASE_URL is not set. Copy .env.example to .env and fill it in.'
+    'DATABASE_URL is not set. Copy .env.example to .env and fill it in.'
   );
   process.exit(1);
 }
 
 const schema = await readFile(new URL('../db/schema.sql', import.meta.url), 'utf8');
 
-const db = createClient({url, authToken});
+const db = createClient({url});
 await db.executeMultiple(schema);
 
 const tables = await db.execute(
