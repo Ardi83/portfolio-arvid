@@ -12,7 +12,7 @@ export const projects = [
     id: 'payment-service',
     name: 'Payment service',
     tagline: 'Centralised payments for multiple apps',
-    url: 'https://payment-service.arvidn.dev',
+    url: 'https://payment-service.arvidn.dev/admin-ui',
     docsUrl: 'https://payment-service.arvidn.dev/docs',
     description:
       'One payment service several products can share, rather than reimplementing checkout each time. Prisma over PostgreSQL, RabbitMQ for event delivery, rate limiting, scheduled reconciliation jobs and an admin UI.',
@@ -22,7 +22,7 @@ export const projects = [
     id: 'storage',
     name: 'Storage service',
     tagline: 'S3-backed object storage API',
-    url: 'https://storage.arvidn.dev',
+    url: 'https://storage.arvidn.dev/admin-ui',
     docsUrl: 'https://storage.arvidn.dev/docs',
     description:
       'An object storage API over S3 with presigned upload and download URLs, so large files never pass through the application server. JWT authentication, a typed client and a documented surface.',
@@ -32,7 +32,7 @@ export const projects = [
     id: 'mail-service',
     name: 'Mail service',
     tagline: 'Standalone transactional email',
-    url: 'https://mail-service.arvidn.dev',
+    url: 'https://mail-service.arvidn.dev/admin-ui',
     description:
       'A Fastify microservice that takes email off the critical path: multi-provider delivery with failover, a persistent queue with retries, templating, and an admin UI for inspecting what was sent and what bounced.',
     stack: ['Fastify', 'TypeScript', 'Prisma', 'Docker'],
