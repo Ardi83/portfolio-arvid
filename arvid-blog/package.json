@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "dev:api": "vercel dev",
+    "db:schema": "node scripts/apply-schema.mjs",
     "db:import": "node scripts/import-firestore.mjs"
   },
   "dependencies": {

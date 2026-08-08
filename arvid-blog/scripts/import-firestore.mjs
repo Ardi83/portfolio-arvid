@@ -11,6 +11,9 @@
 
 import {readFile} from 'node:fs/promises';
 import {createClient} from '@libsql/client';
+import {loadEnv} from './_env.mjs';
+
+await loadEnv();
 
 const exportPath = process.argv[2];
 
