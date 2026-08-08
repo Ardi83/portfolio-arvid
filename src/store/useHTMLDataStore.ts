@@ -63,5 +63,9 @@ const fetchHTMLData = async (): Promise<HTMLNoteRow[]> => {
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
   }
+  const contentType = response.headers.get('content-type') ?? '';
+  if (!contentType.includes('application/json')) {
+    throw new Error('the API route did not return JSON — is the dev server running?');
+  }
   return (await response.json()) as HTMLNoteRow[];
 };

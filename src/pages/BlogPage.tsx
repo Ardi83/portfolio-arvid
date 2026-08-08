@@ -11,6 +11,13 @@ const BlogPage = () => {
     setDataBlog();
   }, [setDataBlog]);
 
+  // The portfolio paints body black; the blog is a light page. Swap it for as
+  // long as this route is mounted, and put it back on the way out.
+  useEffect(() => {
+    document.body.classList.add('blog-theme');
+    return () => document.body.classList.remove('blog-theme');
+  }, []);
+
   return (
     <main className="blog-root">
       <section className="blog-page-section">

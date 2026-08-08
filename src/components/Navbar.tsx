@@ -52,7 +52,7 @@ const Navbar = () => {
           <a
             href="#home"
             className="font-display text-lg font-bold tracking-tight text-cloud">
-            CN<span className="text-accent">.</span>
+            AN<span className="text-accent">.</span>
           </a>
 
           {isDesktop ? (

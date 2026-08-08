@@ -62,6 +62,13 @@ const fetchDataBlog = async (): Promise<BlogPostRow[]> => {
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
   }
+  // Guards against the API route not being served at all, in which case the
+  // dev server answers with HTML or a JS module and response.json() throws
+  // something unreadable.
+  const contentType = response.headers.get('content-type') ?? '';
+  if (!contentType.includes('application/json')) {
+    throw new Error('the API route did not return JSON — is the dev server running?');
+  }
   return (await response.json()) as BlogPostRow[];
 };
 
